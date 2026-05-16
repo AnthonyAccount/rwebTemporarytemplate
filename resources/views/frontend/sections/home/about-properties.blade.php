@@ -1,4 +1,5 @@
-<section class="relative bg-white overflow-hidden py-16">
+<section class=" relative overflow-hidden py-16 bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{{ asset('frontend/home/background.png') }}');">
 
     {{-- About Section --}}
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -50,19 +51,16 @@
         </div>
 
         {{-- Right Images --}}
-        <div class="relative min-h-[360px]">
-            <img src="{{ asset('frontend/about-1.jpg') }}"
-                class="absolute top-10 left-12 w-40 h-40 rounded-full object-cover shadow-lg" alt="">
+        <div class=" min-h-[360px]">
+            <img src="{{ asset('frontend/home/Group 778.png') }}" class="  object-cover " alt="">
 
-            <img src="{{ asset('frontend/about-2.jpg') }}"
-                class="absolute top-0 right-20 w-24 h-24 rounded-full object-cover shadow-lg" alt="">
 
-            <img src="{{ asset('frontend/about-3.jpg') }}"
-                class="absolute top-28 right-4 w-56 h-56 rounded-full object-cover shadow-lg" alt="">
-
-            <img src="{{ asset('frontend/about-4.jpg') }}"
-                class="absolute bottom-0 left-28 w-32 h-32 rounded-full object-cover shadow-lg" alt="">
         </div>
+    </div>
+    <div class="absolute -bottom-[20rem] left-0">
+        <img src="{{ asset('frontend/home/Vector 31.png') }}" class="  object-cover " alt="">
+
+
     </div>
 
     {{-- Properties Section --}}
@@ -82,57 +80,45 @@
             </p>
         </div>
 
+        @php
+            $activities = [
+                [
+                    'image' => 'frontend/home/image.png',
+                    'title' => 'Infinity Pool',
+                    'subtitle' => 'Camp Holiday',
+                ],
+                [
+                    'image' => 'frontend/home/image.png',
+                    'title' => 'Waterfront Stay',
+                    'subtitle' => 'Ocean View',
+                ],
+                [
+                    'image' => 'frontend/home/image.png',
+                    'title' => 'Resto',
+                    'subtitle' => 'Camp Holiday',
+                ],
+                [
+                    'image' => 'frontend/home/image.png',
+                    'title' => 'Relaxation Spot',
+                    'subtitle' => 'Ocean View',
+                ],
+            ];
+        @endphp
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach ($activities as $activity)
+                <div class="relative rounded-xl overflow-hidden h-[25rem] group">
+                    <img src="{{ asset($activity['image']) }}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
 
-            {{-- Card --}}
-            <div class="relative rounded-xl overflow-hidden h-80 group">
-                <img src="{{ asset('frontend/activity-1.jpg') }}"
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                <div class="absolute bottom-5 left-5 text-white">
-                    <h3 class="font-semibold text-lg">Infinity Pool</h3>
-                    <p class="text-xs text-gray-200">Camp Holiday</p>
+                    <div class="absolute bottom-5 left-5 text-white">
+                        <h3 class="font-semibold text-lg">{{ $activity['title'] }}</h3>
+                        <p class="text-xs text-gray-200">{{ $activity['subtitle'] }}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="relative rounded-xl overflow-hidden h-80 group">
-                <img src="{{ asset('frontend/activity-2.jpg') }}"
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                <div class="absolute bottom-5 left-5 text-white">
-                    <h3 class="font-semibold text-lg">Waterfront Stay</h3>
-                    <p class="text-xs text-gray-200">Ocean View</p>
-                </div>
-            </div>
-
-            <div class="relative rounded-xl overflow-hidden h-80 group">
-                <img src="{{ asset('frontend/activity-3.jpg') }}"
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                <div class="absolute bottom-5 left-5 text-white">
-                    <h3 class="font-semibold text-lg">Resto</h3>
-                    <p class="text-xs text-gray-200">Camp Holiday</p>
-                </div>
-            </div>
-
-            <div class="relative rounded-xl overflow-hidden h-80 group">
-                <img src="{{ asset('frontend/activity-4.jpg') }}"
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
-
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                <div class="absolute bottom-5 left-5 text-white">
-                    <h3 class="font-semibold text-lg">Relaxation Spot</h3>
-                    <p class="text-xs text-gray-200">Ocean View</p>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </section>

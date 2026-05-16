@@ -9,8 +9,11 @@
     {{-- Google Font: Poppins --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     {{-- Tailwind CDN --}}
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('assets/js/tailwindcdn.js') }}"></script>
 
     {{-- Tailwind Config --}}
     <script>
@@ -26,13 +29,13 @@
     </script>
 </head>
 
-<body class="bg-gray-100 flex flex-col min-h-screen font-poppins">
+<body class="bg-[#f5f5f5] flex flex-col min-h-screen font-poppins">
 
     {{-- Navbar --}}
     @include('frontend.partials.navbar')
 
     {{-- Content --}}
-    <main class="p-3 w-full">
+    <main class=" w-full">
         @yield('content')
     </main>
 
