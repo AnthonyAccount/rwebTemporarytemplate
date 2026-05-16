@@ -47,4 +47,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function hasPrivilege(string $privilege): bool
+    {
+        return $this->role
+            && $this->role->privileges
+                ->contains('name', $privilege);
+    }
 }

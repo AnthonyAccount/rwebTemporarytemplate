@@ -10,11 +10,10 @@ class PrivilegeSeeder extends Seeder
     public function run(): void
     {
         $privileges = [
-            'create_user',
-            'edit_user',
-            'delete_user',
-            'view_reports',
-            'manage_roles',
+            'Dashboard',
+            'Users',
+            'Roles',
+            'Privileges',
         ];
 
         foreach ($privileges as $privilege) {
