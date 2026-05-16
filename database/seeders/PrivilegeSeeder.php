@@ -14,6 +14,7 @@ class PrivilegeSeeder extends Seeder
             'Users',
             'Roles',
             'Privileges',
+            'Settings',
         ];
 
         foreach ($privileges as $privilege) {

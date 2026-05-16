@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\Auth\LoginController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\PrivilegeController;
+use App\Http\Controllers\Backend\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,42 +41,28 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::middleware('auth')
+Route::middleware(['auth'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
-
-        /*
-        |--------------------------------------------------------------------------
-        | Dashboard
-        |--------------------------------------------------------------------------
-        */
 
         Route::get('/dashboard', function () {
             return view('backend.pages.dashboard');
         })->name('dashboard');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Users
-        |--------------------------------------------------------------------------
-        */
+        Route::resource('users', UserController::class)
+            ->middleware('privilege:Users');
 
-        Route::resource('users', UserController::class);
+        Route::resource('roles', RoleController::class)
+            ->middleware('privilege:Roles');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Roles
-        |--------------------------------------------------------------------------
-        */
+        Route::resource('privileges', PrivilegeController::class)
+            ->middleware('privilege:Privileges');
 
-        Route::resource('roles', RoleController::class);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Privileges
-        |--------------------------------------------------------------------------
-        */
+        Route::get('/settings', [SettingController::class, 'edit'])
+            ->name('settings.edit');
 
-        Route::resource('privileges', PrivilegeController::class);
+        Route::put('/settings', [SettingController::class, 'update'])
+            ->name('settings.update');
     });
